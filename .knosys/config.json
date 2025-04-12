@@ -1,0 +1,14 @@
+{
+  "command": "./.knosys/scripts/command",
+  "site": {
+    "default": {
+      "alias": "",
+      "cname": "",
+      "generator": "hexo",
+      "git": {
+        "url": "",
+        "branch": "gh-pages"
+      }
+    }
+  }
+}
