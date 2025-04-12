@@ -1,11 +1,23 @@
 <%- partial(theme.header && theme.header.partial || '_ksio/partials/header') %>
 <main class="Page-content">
-  <article class="Homepage">
-    <header class="Homepage-header">
-      <h1><%= config.title %></h1>
-      <p class="Homepage-slogan"><%= config.subtitle %></p>
-      <p class="GetStarted"><a href="https://lime-theme.github.io">Get Started<i class="fa fa-long-arrow-right"></i></a></p>
-    </header>
-  </article>
+  <%- partial('_ksio/slots/banner') %>
+  <div class="container">
+    <article class="Page-main Article">
+      <header class="Article-header HomeHeader">
+        <div>
+          <h1 class="Article-title HomeHeader-title"><%= config.title %></h1>
+          <p class="HomeHeader-slogan"><%= config.subtitle %></p>
+        </div>
+      </header>
+      <div class="Article-content">
+        <h2>实验日志</h2>
+        <ul>
+          <li><a href="https://s.ourai.ws/dailies/m978bkfs/">日报 20250407：在清迈尝试高性价比消费</a></li>
+          <li><a href="https://s.ourai.ws/dailies/m95srphc/">日报 20250406：尝试旅居了，努力适应中！</a></li>
+          <li><a href="https://s.ourai.ws/dailies/m8zzhs14/">日报 20250402：我要开始游牧了？</a></li>
+        </ul>
+      </div>
+    </article>
+  </div>
 </main>
 <%- partial(theme.footer && theme.footer.partial || '_ksio/partials/footer') %>

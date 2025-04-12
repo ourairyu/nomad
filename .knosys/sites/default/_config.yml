@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Lime Site Template
-subtitle: Born for Hexo sites
+title: 欧雷的数字游牧实验
+subtitle: 记录我的数字游牧生活
 description:
-keywords:
-author: Ourai L.
+keywords: 欧雷,Ourai Lin,Ourai L.,Ourai,欧雷流,Ourairyu,数字游牧实验,数字游牧生活,数字游牧,digital nomadism,数字游民,digital nomad
+author: 欧雷
 language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://example.io
+url: https://nomad.ourai.ws
 permalink: posts/:title/
 permalink_defaults:
 pretty_urls:
@@ -97,25 +97,31 @@ ignore:
 theme: lime-local
 theme_config:
   meta:
-    url: https://lime-theme.github.io
+    url: https://nomad.ourai.ws
   brand:
     parent:
-      text: Lime
-      url: https://lime-theme.github.io
-    text: Hexo
+      text: Ourai.WS
+      url: https://ourai.ws/
+    text: 游牧
     color: "#0871ab"
   copyright:
     owner:
-      text: Ourai L.
-      url: https://linxoid.com/ourai
+      text: 欧雷流
+      url: https://ourai.ws/
     period:
       start: 2025
   header:
     navs:
-      - text: Guides
-        url: https://lime-theme.github.io
+      - text: 关于
+        url: /about/
     navbar:
       placement: right
+  footer:
+    links:
+      - text: "@"
+        url: https://meta.ourai.ws/
+      - text: 赞助
+        url: https://ourai.ws/sponsor/
 
 ksio:
   defaults:

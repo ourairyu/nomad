@@ -1,7 +1,7 @@
 {
-  "name": "@lime-theme/lime-site-template-hexo",
+  "name": "@ourairyu/digital-nomadism",
   "version": "0.0.0",
-  "description": "Lime Site Template for Hexo",
+  "description": "Digital nomadism experiment",
   "main": "index.js",
   "private": true,
   "engines": {

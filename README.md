@@ -1,6 +1,6 @@
-# Lime Site Template for Hexo
+# Ourai's Digital Nomadism Experiment
 
-Born for Hexo sites.
+The way to become a digital nomad. ;-D
 
 ## License
 

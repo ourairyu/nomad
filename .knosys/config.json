@@ -2,11 +2,11 @@
   "command": "./.knosys/scripts/command",
   "site": {
     "default": {
-      "alias": "",
-      "cname": "",
+      "alias": "ourairyu-nomad",
+      "cname": "nomad.ourai.ws",
       "generator": "hexo",
       "git": {
-        "url": "",
+        "url": "https://github.com/ourairyu/nomad.git",
         "branch": "gh-pages"
       }
     }
