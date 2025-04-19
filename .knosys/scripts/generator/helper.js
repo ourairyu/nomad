@@ -1,6 +1,6 @@
 const { existsSync } = require('fs');
 
-const { noop } = require('@ntks/toolbox');
+const { isArray, noop } = require('@ntks/toolbox');
 const { dump } = require('js-yaml');
 
 const {
@@ -12,6 +12,10 @@ const {
 } = require('../helper');
 
 const METADATA_IMAGE_KEYS = ['banner', 'avatar', 'thumbnail', 'cover', 'logo'];
+
+function isItemValid(item) {
+  return isArray(item.tags) && item.tags.indexOf('digital-nomad') > -1;
+}
 
 function getItemSourceDir(sourceRootPath, metadata) {
   return `${sourceRootPath}/${metadata.source}`;
@@ -206,7 +210,7 @@ function createGeneratorLegacy(collectionName, dataSourceRoot, localDataDir, loc
             const imageFileName = imageData[k];
 
             if (imageFileName) {
-              const imagePath = getImagePath ? getImagePath(slug, imageFileName, item) : `/knosys/${imagePathPrefix}/${slug}/${imageFileName}`;
+              const imagePath = getImagePath ? getImagePath(slug, imageFileName) : `/knosys/${imagePathPrefix}/${slug}/${imageFileName}`;
 
               if (k === 'banner') {
                 const itemBanner = item.banner;
@@ -249,14 +253,15 @@ function createGeneratorLegacy(collectionName, dataSourceRoot, localDataDir, loc
   }
 }
 
-function createGenerator(sourceRootPath, collectionName, opts) {
-  return createGeneratorLegacy(collectionName, sourceRootPath, getLocalDataRoot, getLocalDocRoot, {
+function createGenerator(sourceRootPath, sharedRootPath, collectionName, opts) {
+  return createGeneratorLegacy(collectionName, sharedRootPath, getLocalDataRoot, getLocalDocRoot, {
     paramPath: 'id',
     metadataRequired: false,
+    getItemImageSourceDir: getItemSourceDir.bind(null, sourceRootPath),
     beforeRead: createBeforeReadHook(collectionName),
     readEach: generateMarkdown.bind(null, collectionName),
     ...opts,
   });
 }
 
-module.exports = { getItemSourceDir, cacheClassifyItems, getCollectionRoot, createGenerator };
+module.exports = { isItemValid, getItemSourceDir, cacheClassifyItems, getCollectionRoot, createGenerator };

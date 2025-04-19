@@ -1,8 +1,8 @@
 const { resolve: resolvePath } = require('path');
 const { existsSync } = require('fs');
 
-const { resolveRootPath, ensureDirExists, getLocalDataRoot, getLocalDocRoot } = require('../helper');
-const { /* your generators */ } = require('../generator');
+const { resolveRootPath, scanAndSortByAsc, ensureDirExists, getLocalDataRoot } = require('../helper');
+const { createDailyGenerator } = require('../generator');
 
 module.exports = {
   execute: dataSource => {
@@ -12,17 +12,15 @@ module.exports = {
       return;
     }
 
-    [getLocalDataRoot(), getLocalDocRoot()].forEach(distPath => ensureDirExists(distPath, true));
+    ensureDirExists(getLocalDataRoot(), true);
 
-    const innerSourceRootPath = resolvePath(resolveRootPath(), 'data');
-
-    const outerSourceRootPath = resolvePath(srcPath, 'data');
+    const sourceRootPath = resolvePath(srcPath, 'data');
     const sharedRootPath = resolvePath(srcPath, 'shared');
 
     const generators = {
-      /* your generators */
+      dailies: createDailyGenerator(sourceRootPath, sharedRootPath),
     };
 
-    Object.values(generators).forEach(generator => generator());
+    scanAndSortByAsc(sharedRootPath).forEach(collection => generators[collection] && generators[collection]());
   },
 };

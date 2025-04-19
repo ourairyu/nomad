@@ -10,11 +10,13 @@
         </div>
       </header>
       <div class="Article-content">
-        <h2>实验日志</h2>
+        <h2>实验动态</h2>
         <ul>
-          <li><a href="https://s.ourai.ws/dailies/m978bkfs/">日报 20250407：在清迈尝试高性价比消费</a></li>
-          <li><a href="https://s.ourai.ws/dailies/m95srphc/">日报 20250406：尝试旅居了，努力适应中！</a></li>
-          <li><a href="https://s.ourai.ws/dailies/m8zzhs14/">日报 20250402：我要开始游牧了？</a></li>
+          <% const dailyData = site.data['knosys/dailies'] %>
+          <% dailyData.sequence.slice().reverse().forEach(id => { %>
+            <% const daily = dailyData.items[id] %>
+            <li><time datetime="<%= date_xml(daily.date) %>" style="margin-right: 1em;"><span><%= date(daily.date, 'YYYY-MM-DD') %></span></time><a href="https://s.ourai.ws/dailies/<%= id %>/" target="_blank" rel="external" title="<%= daily.description %>"><%= daily.title %></a></li>
+          <% }) %>
         </ul>
       </div>
     </article>
